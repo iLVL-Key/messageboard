@@ -49,6 +49,7 @@ header{
 main{
     background-color: aliceblue;
     flex-grow: 1;
+    padding-top: 79px; /* Account for the header's height (1 short to prevent the line divider from showing at the top) */
     padding-bottom: 120px; /* Account for the footer's height */
     overflow-y: auto;
     width: 100%;
@@ -67,6 +68,12 @@ footer{
 .message-input-area {
     display: flex;
     align-items: flex-start;
+    gap: 10px;
+}
+
+.checkbox {
+    height: 40px;
+    width: 40px;
 }
 
 #message-input {
@@ -77,6 +84,7 @@ footer{
 #name-input {
     height: 40px;
     margin-top: 0px;
+    margin-right: 0px;
     resize: none;
     padding-top: 10px;
 }
@@ -113,7 +121,7 @@ button{
     width: 100%;
 }
 
-.handle{
+.message-name{
     font-size: .75rem;
     font-weight: 500;
     color: #555;
