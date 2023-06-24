@@ -12,20 +12,28 @@
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 
-<body> 
-	<header>
-		<h1>Messages</h1>
-	</header>
-	<main>
-		<div class="feed" id="feed">
-			<!-- Messages here!! -->
-		</div>
-		<div class="message-input-area">
-			<img src="images/scrimbalogo.png" class="profile-pic">
-			<textarea placeholder="Send a quick message!" id="message-input"></textarea>
-		</div>
-		<button id="message-btn">Send</button>
-	</main>
+<body>
+	<div class="container">
+		<header>
+			<h1>Messages</h1>
+		</header>
+		<main id="mainElement">
+			<div class="feed" id="feed">
+				<!-- Messages here!! -->
+			</div>
+		</main>
+		<footer>
+			<div id="messageInput">
+				<div class="message-input-area">
+					<textarea placeholder="Leave a message!" id="message-input"></textarea>
+				</div>
+				<div class="message-input-area">
+					<textarea placeholder="Name" id="name-input"></textarea>
+					<button id="message-btn">Send</button>
+				</div>
+			</div>
+		</footer>
+	</div>
 	<script src="index.js" type="module"></script>
 </body>
 
