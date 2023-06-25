@@ -25,16 +25,17 @@
 		<footer>
 			<div id="messageInput">
 				<div class="message-input-area">
-					<textarea placeholder="Leave a message!" id="message-input"></textarea>
+					<textarea placeholder="Leave a message!" id="message-input" autofocus></textarea>
 				</div>
 				<div class="message-input-area">
 					<textarea placeholder="Name" id="name-input"></textarea>
-					<label class="checkbox"><input type="checkbox" title="Save name" checked></label>
+					<input type="checkbox" class="checkbox" title="Save name" id="name-save" checked>
 					<button id="message-btn">Send</button>
 				</div>
 			</div>
 		</footer>
 	</div>
+	<div class="notification hidden" id="notification">Placeholder Text</div>
 	<script src="index.js" type="module"></script>
 </body>
 
