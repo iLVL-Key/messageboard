@@ -186,7 +186,7 @@ onValue(messagesInDB, function(snapshot) {
     feedHtml += `
     <div class="message" title="${messageDateTime}" id="${messageKey}">
         <div>
-            <p class="message-name">${messageName}</p>
+            <p class="message-name">${messageName} (${messageDateTime})</p>
             <p class="message-text">${messageText}</p>
         </div>            
     </div>
