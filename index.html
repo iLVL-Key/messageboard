@@ -14,15 +14,35 @@
 
 <body>
 	<div class="container">
-		<header>
-			<h1>Messages</h1>
+		<header id="headerElement" class="blue-medium-bg">
+			<h1 id="h1Element" class="blue-h1">Messages</h1>
+			<div id="menu-container">
+				<div>
+					<img src="/images/bars-solid.svg" id="menu-btn">
+				</div>
+				<div>
+					<ul id="menu" class="blue-medium-bg hidden">
+						<li id="menu-blue" class="blue-medium-bg">Blue</li>
+						<li id="menu-purple" class="purple-medium-bg">Purple</li>
+						<!-- <li>
+							<label for="maxMessages">Message Limit </label>
+							<select name="maxMessages" id="maxMessages">
+								<option value="25">25</option>
+								<option value="50" selected>50</option>
+								<option value="75">75</option>
+								<option value="100">100</option>
+							</select>
+						</li> -->
+					</ul>
+				</div>
+			</div>
 		</header>
-		<main id="mainElement">
+		<main id="mainElement" class="blue-light-bg">
 			<div class="feed" id="feed">
 				<!-- Messages here!! -->
 			</div>
 		</main>
-		<footer>
+		<footer id="footerElement" class="blue-medium-bg">
 			<div id="messageInput">
 				<div class="message-input-area">
 					<textarea placeholder="Leave a message!" id="message-input" autofocus></textarea>
@@ -30,12 +50,12 @@
 				<div class="message-input-area">
 					<textarea placeholder="Name" id="name-input"></textarea>
 					<input type="checkbox" class="checkbox" title="Save name" id="name-save" checked>
-					<button id="message-btn">Send</button>
+					<button id="message-btn" class="blue-btn">Send</button>
 				</div>
 			</div>
 		</footer>
 	</div>
-	<div class="notification hidden" id="notification">Placeholder Text</div>
+	<div class="notification hidden" id="notification"></div>
 	<script src="index.js" type="module"></script>
 </body>
 

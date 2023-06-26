@@ -52,6 +52,20 @@ document.addEventListener('click', function(event){
         handleNameSaveChkbx()
     }
 
+    // Menu icon is clicked
+    else if (event.target.id === 'menu-btn'){
+        handleMenuBtnClicked()
+    }
+
+    // Blue menu button is clicked
+    else if (event.target.id === 'menu-blue'){
+        handleBlueBtnClicked()
+    }
+
+    // Purple menu button is clicked
+    else if (event.target.id === 'menu-purple'){
+        handlePurpleBtnClicked()
+    }
 })
 
 
@@ -113,6 +127,60 @@ function handleNameSaveChkbx(){
     }
 
     showNotification()
+}
+
+
+// Click on the menu button
+function handleMenuBtnClicked(){
+    document.getElementById('menu').classList.toggle('hidden') // toggle the hidden class
+}
+
+
+// Click on the blue menu button
+function handleBlueBtnClicked(){
+
+    document.getElementById('h1Element').classList.remove('purple-h1')
+    document.getElementById('h1Element').classList.add('blue-h1')
+
+    document.getElementById('mainElement').classList.remove('purple-light-bg')
+    document.getElementById('mainElement').classList.add('blue-light-bg')
+
+    document.getElementById('headerElement').classList.remove('purple-medium-bg')
+    document.getElementById('headerElement').classList.add('blue-medium-bg')
+
+    document.getElementById('footerElement').classList.remove('purple-medium-bg')
+    document.getElementById('footerElement').classList.add('blue-medium-bg')
+
+    document.getElementById('menu').classList.remove('purple-medium-bg')
+    document.getElementById('menu').classList.add('blue-medium-bg')
+
+    document.getElementById('message-btn').classList.remove('purple-btn')
+    document.getElementById('message-btn').classList.add('blue-btn')
+
+}
+
+
+// Click on the purple menu button
+function handlePurpleBtnClicked(){
+
+    document.getElementById('h1Element').classList.remove('blue-h1')
+    document.getElementById('h1Element').classList.add('purple-h1')
+    
+    document.getElementById('mainElement').classList.remove('blue-light-bg')
+    document.getElementById('mainElement').classList.add('purple-light-bg')
+
+    document.getElementById('headerElement').classList.remove('blue-medium-bg')
+    document.getElementById('headerElement').classList.add('purple-medium-bg')
+
+    document.getElementById('footerElement').classList.remove('blue-medium-bg')
+    document.getElementById('footerElement').classList.add('purple-medium-bg')
+
+    document.getElementById('menu').classList.remove('blue-medium-bg')
+    document.getElementById('menu').classList.add('purple-medium-bg')
+
+    document.getElementById('message-btn').classList.remove('blue-btn')
+    document.getElementById('message-btn').classList.add('purple-btn')
+
 }
 
 
