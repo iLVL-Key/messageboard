@@ -26,6 +26,8 @@ messageInput.focus()
 // Load the stored name when the page is first opened
 loadNameFromLocalStorage()
 
+// Load the stored theme color when the page is first loaded
+loadThemeColorFromLocalStorage()
 
 // Listen for clicks on certain things
 document.addEventListener('click', function(event){
@@ -59,12 +61,12 @@ document.addEventListener('click', function(event){
 
     // Blue menu button is clicked
     else if (event.target.id === 'menu-blue'){
-        handleBlueBtnClicked()
+        changeThemeToBlue()
     }
 
     // Purple menu button is clicked
     else if (event.target.id === 'menu-purple'){
-        handlePurpleBtnClicked()
+        changeThemeToPurple()
     }
 })
 
@@ -137,7 +139,7 @@ function handleMenuBtnClicked(){
 
 
 // Click on the blue menu button
-function handleBlueBtnClicked(){
+function changeThemeToBlue(){
 
     document.getElementById('h1Element').classList.remove('purple-h1')
     document.getElementById('h1Element').classList.add('blue-h1')
@@ -157,11 +159,13 @@ function handleBlueBtnClicked(){
     document.getElementById('message-btn').classList.remove('purple-btn')
     document.getElementById('message-btn').classList.add('blue-btn')
 
+    saveThemeColorToLocalStorage('blue')
+
 }
 
 
 // Click on the purple menu button
-function handlePurpleBtnClicked(){
+function changeThemeToPurple(){
 
     document.getElementById('h1Element').classList.remove('blue-h1')
     document.getElementById('h1Element').classList.add('purple-h1')
@@ -180,6 +184,8 @@ function handlePurpleBtnClicked(){
 
     document.getElementById('message-btn').classList.remove('blue-btn')
     document.getElementById('message-btn').classList.add('purple-btn')
+
+    saveThemeColorToLocalStorage('purple')
 
 }
 
@@ -209,6 +215,27 @@ function loadNameFromLocalStorage() {
     const messageName = localStorage.getItem('messageName')
     if (messageName) {
         nameInput.value = messageName
+    }
+}
+
+
+// Save the theme color to local storage
+function saveThemeColorToLocalStorage(name) {
+    localStorage.setItem('themeColor', name)
+}
+
+
+// Load the theme color from local storage (if one exists)
+function loadThemeColorFromLocalStorage() {
+    const themeColor = localStorage.getItem('themeColor')
+    if (themeColor) {
+        if (themeColor === 'purple') {
+            changeThemeToPurple()
+        }
+
+        else {
+            changeThemeToBlue()
+        }
     }
 }
 
