@@ -10,6 +10,7 @@ const messagesInDB = ref(database, "messages")
 
 
 let notificationTimeout // Used to display notifications on the screen for a short time
+let maxMessagesDisplayed = 30 // Used to limit the display to the last x number of messages
 
 
 // Take control of elements used in multiple functions
@@ -181,28 +182,44 @@ function convertToUserTimeZone(dateTimeUTC) {
 
 // New message gets posted (realtime)
 onValue(messagesInDB, function(snapshot) {
-    
-    let feedHtml = ``
-    
+    let feedHtml = ``; // Clear the feed so we can build it from scratch each time
+    const messages = []; // Array to store the last 30 messages
+  
     snapshot.forEach(function(childSnapshot) {
-    const messageKey = childSnapshot.key //This is the uuid for each message
-    const messageData = childSnapshot.val()
-    const messageName = messageData.messageName
-    const messageText = messageData.messageText
-    const messageDateTime = convertToUserTimeZone(messageData.messageDateTime)
-
-    
-    feedHtml += `
-    <div class="message" id="${messageKey}">
-        <div>
-            <p class="message-name">${messageName} (${messageDateTime})</p>
-            <p class="message-text">${messageText}</p>
-        </div>            
-    </div>
-    `
+      const messageKey = childSnapshot.key; // This is the UUID for each message
+      const messageData = childSnapshot.val();
+      const messageName = messageData.messageName;
+      const messageText = messageData.messageText;
+      const messageDateTime = convertToUserTimeZone(messageData.messageDateTime);
+  
+      // Add message to the beginning of the array
+      messages.unshift({
+        messageKey,
+        messageName,
+        messageText,
+        messageDateTime
+      });
+  
+      // Limit the array to the last x number of messages
+      if (messages.length > maxMessagesDisplayed) {
+        messages.pop();
+      }
     });
-
-    document.getElementById('feed').innerHTML = feedHtml
-
-    scrollToBottom()
-})
+  
+    // Iterate over messages array in reverse order
+    for (let i = messages.length - 1; i >= 0; i--) {
+      const message = messages[i];
+      feedHtml += `
+      <div class="message" id="${message.messageKey}">
+        <div>
+          <p class="message-name">${message.messageName} <span id="message-date">(${message.messageDateTime})</span></p>
+          <p class="message-text">${message.messageText}</p>
+        </div>            
+      </div>
+      `;
+    }
+  
+    document.getElementById('feed').innerHTML = feedHtml;
+  
+    scrollToBottom();
+  });

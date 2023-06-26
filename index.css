@@ -51,7 +51,7 @@ main{
     background-color: aliceblue;
     flex-grow: 1;
     padding-top: 49px; /* Account for the header's height (1 short to prevent the line divider from showing at the top) */
-    padding-bottom: 120px; /* Account for the footer's height */
+    padding-bottom: 130px; /* Account for the footer's height */
     overflow-y: auto;
     width: 100%;
 
@@ -119,17 +119,22 @@ button{
 .message{
     border-top: 1px solid lightgray;
     padding: 0 10;
-    width: 100%;
 }
 
 .message-name{
-    font-size: .75rem;
-    font-weight: 500;
+    font-size: .9rem;
+    font-weight: 600;
     color: #555;
 }
 
+#message-date{
+    font-size: .75rem;
+    font-weight: 500;
+    color: #999;
+}
+
 .message-text{
-    line-height: 15px;
+    line-height: 1.5rem;
 }
 
 /* Notification */
