@@ -54,6 +54,15 @@ document.addEventListener('click', function(event){
 })
 
 
+// Hitting Enter while typing inside the message input field will send the message
+messageInput.addEventListener("keypress", function(event){
+    if (event.key === "Enter") {
+        event.preventDefault()
+        document.getElementById("message-btn").click()
+    }
+})
+
+
 // Click on the Send button
 function handleMessageBtnClick(){
     const messageInput = document.getElementById('message-input')
@@ -184,7 +193,7 @@ onValue(messagesInDB, function(snapshot) {
 
     
     feedHtml += `
-    <div class="message" title="${messageDateTime}" id="${messageKey}">
+    <div class="message" id="${messageKey}">
         <div>
             <p class="message-name">${messageName} (${messageDateTime})</p>
             <p class="message-text">${messageText}</p>
