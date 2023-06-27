@@ -15,21 +15,10 @@ html, body {
     
 }
 
-/* typography and icons */
-
 h1{
     margin-top: 5px;
     margin-bottom: 5px;
     margin-left: 10px;
-}
-
-i{
-    font-size: 1rem;
-    cursor: pointer;
-}
-
-.fa-solid{
-    color: #999;
 }
 
 /* layout */
@@ -37,6 +26,7 @@ i{
 main, header, footer{
     width: 100%;
     max-width: 480px;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2);
 }
 
 header{
@@ -45,6 +35,7 @@ header{
     top: 0 auto;
     display: flex;
     justify-content: space-between;
+    border-bottom: 1px solid #555;
 }
 
 main{
@@ -53,13 +44,13 @@ main{
     padding-bottom: 130px; /* Account for the footer's height */
     overflow-y: auto;
     width: 100%;
-
 }
 
 footer{
     height: 130px;
     position: fixed;
     bottom: 0;
+    border-top: 1px solid #555;
 }
 
 /* Menu */
@@ -74,7 +65,7 @@ footer{
     margin-right: 10px;
     height: 30px;
     width: 30px;
-    color: #555;
+    cursor: pointer;
 }
 
 #menu{
@@ -82,10 +73,13 @@ footer{
     font-size: 1.25rem;
     line-height: 2rem;
     padding: 10px;
-    margin-top: 9px;
+    margin-top: 10px;
     margin-right: 0px;
     min-width: 200px;
     list-style-type: none;
+    border-left: 1px solid #555;
+    border-bottom: 1px solid #555;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2);
 }
 
 /* Color themes */
@@ -149,13 +143,21 @@ footer{
 }
 
 textarea{
-    border: none;
+    outline: none;
     resize: none;
     padding: 5px;
     margin: 10px;
     width: 100%;
     font-size: 1rem;
     line-height: 1.25rem;
+    background-color: #fbfbfb;
+    border: 2px solid #cacaca;
+    border-radius: 5px;
+}
+
+textarea:focus{
+    border-color: #707070;
+    background-color: #fff;
 }
 
 button{
