@@ -277,44 +277,44 @@ function convertToUserTimeZone(dateTimeUTC) {
 
 // New message gets posted (realtime)
 onValue(messagesInDB, function(snapshot) {
-    let feedHtml = ``; // Clear the feed so we can build it from scratch each time
-    const messages = []; // Array to store the last 30 messages
+    let feedHtml = `` // Clear the feed so we can build it from scratch each time
+    const messages = [] // Array to store the messages
   
     snapshot.forEach(function(childSnapshot) {
-      const messageKey = childSnapshot.key; // This is the UUID for each message
-      const messageData = childSnapshot.val();
-      const messageName = messageData.messageName;
-      const messageText = messageData.messageText;
-      const messageDateTime = convertToUserTimeZone(messageData.messageDateTime);
+        const messageKey = childSnapshot.key // This is the UUID for each message
+        const messageData = childSnapshot.val()
+        const messageName = messageData.messageName
+        const messageText = messageData.messageText
+        const messageDateTime = convertToUserTimeZone(messageData.messageDateTime)
   
-      // Add message to the beginning of the array
-      messages.unshift({
-        messageKey,
-        messageName,
-        messageText,
-        messageDateTime
-      });
-  
-      // Limit the array to the last x number of messages
-      if (messages.length > maxMessagesDisplayed) {
-        messages.pop();
-      }
-    });
+    // Add message to the beginning of the array
+        messages.unshift({
+            messageKey,
+            messageName,
+            messageText,
+            messageDateTime
+        })
+    
+        // Limit the array to the last x number of messages
+        if (messages.length > maxMessagesDisplayed) {
+            messages.pop()
+        }
+    })
   
     // Iterate over messages array in reverse order
     for (let i = messages.length - 1; i >= 0; i--) {
-      const message = messages[i];
-      feedHtml += `
-      <div class="message" id="${message.messageKey}">
-        <div>
-          <p class="message-name">${message.messageName} <span id="message-date">(${message.messageDateTime})</span></p>
-          <p class="message-text">${message.messageText}</p>
-        </div>            
-      </div>
-      `;
+        const message = messages[i]
+        feedHtml += `
+        <div class="message" id="${message.messageKey}">
+            <div>
+                <p class="message-name">${message.messageName} <span id="message-date">(${message.messageDateTime})</span></p>
+                <p class="message-text">${message.messageText}</p>
+            </div>            
+        </div>
+         `
     }
   
-    document.getElementById('feed').innerHTML = feedHtml;
+    document.getElementById('feed').innerHTML = feedHtml
   
-    scrollToBottom();
-  });
+    scrollToBottom()
+  })
